@@ -6,7 +6,6 @@ import java.io.InputStreamReader;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
  * 가장 가까운 큰수
@@ -37,7 +36,7 @@ public class Main1 {
             visited[i] = false;
         }
 
-        List<Integer> collectedNumList = numList.stream().sorted().collect(Collectors.toList());
+        List<Integer> collectedNumList = numList.stream().sorted().toList();
 
         return collectedNumList.indexOf(n) == collectedNumList.size() - 1 ? -1 : collectedNumList.get(collectedNumList.indexOf(n) + 1);
     }

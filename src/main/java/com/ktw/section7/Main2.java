@@ -46,20 +46,17 @@ public class Main2 {
                 if (cur.location == home) return count;
                 if (cur.location >= 0 && cur.location < 10001 && !visited[cur.location]) {
                     if (!cur.move) {
-                        deque.offer(Node.of(cur.location + a, false));
                         deque.offer(Node.of(cur.location - b, true));
-                    } else {
-                        deque.offer(Node.of(cur.location + a, false));
                     }
+                    deque.offer(Node.of(cur.location + a, false));
                 }
             }
             count++;
         }
-
         return -1;
     }
 
-    static record Node(int location, boolean move) {
+    record Node(int location, boolean move) {
 
         public static Node of(int location, boolean move) {
             return new Node(location, move);

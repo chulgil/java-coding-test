@@ -3,8 +3,9 @@ package com.ktw.section6;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayDeque;
 import java.util.Arrays;
-import java.util.Stack;
+import java.util.Deque;
 
 public class Main2Solve {
 
@@ -13,7 +14,7 @@ public class Main2Solve {
 
     private static int answer;
 
-    private static Stack<Integer> pm;
+    private static Deque<Integer> pm;
 
     public static void main(String[] args) {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
@@ -26,7 +27,7 @@ public class Main2Solve {
     static int solution(BufferedReader reader) throws IOException {
         int n = Integer.parseInt(reader.readLine());
         answer = 0;
-        pm = new Stack<>();
+        pm = new ArrayDeque<>();
         ch = new int[8];
         relation = new int[8][8];
 
@@ -41,17 +42,18 @@ public class Main2Solve {
     }
 
     private static void dfs(int L) {
-        if (L == 7) answer++;
-        else {
-            for (int i = 1; i < 8; i++) {
-                if (!pm.isEmpty() && relation[pm.peek()][i] == 1) continue;
-                if (ch[i] == 0) {
-                    ch[i] = 1;
-                    pm.push(i);
-                    dfs(L + 1);
-                    ch[i] = 0;
-                    pm.pop();
-                }
+        if (L == 7) {
+            answer++;
+            return;
+        }
+        for (int i = 1; i < 8; i++) {
+            if (!pm.isEmpty() && relation[pm.peek()][i] == 1) continue;
+            if (ch[i] == 0) {
+                ch[i] = 1;
+                pm.push(i);
+                dfs(L + 1);
+                ch[i] = 0;
+                pm.pop();
             }
         }
     }

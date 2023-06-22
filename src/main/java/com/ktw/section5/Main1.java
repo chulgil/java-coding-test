@@ -1,4 +1,4 @@
-package com.ktw.section8;
+package com.ktw.section5;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -28,14 +28,14 @@ public class Main1 {
         Arrays.sort(nums);
         int m = Integer.parseInt(br.readLine());
         int left = 0;
-        int right = nums.length-1;
+        int right = nums.length - 1;
 
-        while (left<right){
-            if(nums[left] + nums[right]<=m){
+        while (left < right) {
+            if (nums[left] + nums[right] <= m) {
                 answer++;
                 left++;
                 right--;
-            }else if(nums[left]+nums[right]>m){
+            } else if (nums[left] + nums[right] > m) {
                 right--;
                 answer++;
             }
